@@ -1,0 +1,351 @@
+@echo off
+title Menu de Reparo e Ferramentas de TI
+color 02
+rem ***************************************************
+rem * Menu de Reparo e Ferramentas de TI *
+rem * Create by Matheus Nascimento - Version 1.0 *
+rem ***************************************************
+
+:menu
+cls
+echo ==================================================
+echo     Menu de Reparo e Ferramentas de TI
+echo ==================================================
+echo 1. Aplicativos
+echo 2. Rede
+echo 3. Impressora
+echo 4. Atualizacao e Drivers
+echo 5. Sair
+echo ==================================================
+set /p opcao=Escolha uma opcao (1-5): 
+
+if %opcao%==1 goto aplicativos
+if %opcao%==2 goto rede
+if %opcao%==3 goto impressora
+if %opcao%==4 goto drivers
+if %opcao%==5 exit
+echo Opcao invalida! Tente novamente.
+pause
+goto menu
+
+rem =========================
+rem MENU - APLICATIVOS
+rem =========================
+:aplicativos
+cls
+echo ==================================================
+echo     MENU - APLICATIVOS
+echo ==================================================
+echo 1 - Instalar Winget
+echo 2 - Instalar Google Chrome
+echo 3 - Instalar Pacote Office
+echo 4 - Instalar CCleaner
+echo 5 - Instalar Revo Uninstaller
+echo 6 - Instalar Advanced IP Scanner
+echo 7 - Instalar CPU-Z
+echo 8 - Instalar WinDirStat
+echo 9 - Instalar AnyDesk
+echo 10 - Voltar ao Menu Principal
+echo ==================================================
+set /p appopcao=Escolha uma opcao: 
+
+if %appopcao%==1 goto installwinget
+if %appopcao%==2 goto installchrome
+if %appopcao%==3 goto installoffice
+if %appopcao%==4 goto installccleaner
+if %appopcao%==5 goto installrevo
+if %appopcao%==6 goto installips
+if %appopcao%==7 goto installcpuz
+if %appopcao%==8 goto installwindirstat
+if %appopcao%==9 goto installanydesk
+if %appopcao%==10 goto menu
+echo Opcao invalida! Tente novamente.
+pause
+goto aplicativos
+
+:installwinget
+cls
+echo ============================================
+echo INSTALACAO - WINGET
+echo ============================================
+winget --version >nul 2>&1
+if %errorlevel%==0 (
+    echo Winget ja esta instalado!
+) else (
+    echo Winget nao encontrado. Instalando App Installer...
+    powershell -Command "Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile $env:TEMP\AppInstaller.msixbundle"
+    powershell -Command "Add-AppxPackage -Path $env:TEMP\AppInstaller.msixbundle"
+)
+echo * Execução concluída: INSTALACAO WINGET - Executado por Matheus Nascimento *
+pause
+goto aplicativos
+
+:installchrome
+cls
+echo ============================================
+echo INSTALACAO - GOOGLE CHROME
+echo ============================================
+winget install --id=Google.Chrome -e --source winget
+echo * Execução concluída: INSTALACAO GOOGLE CHROME - Executado por Matheus Nascimento *
+pause
+goto aplicativos
+
+:installoffice
+cls
+echo ============================================
+echo INSTALACAO - PACOTE OFFICE
+echo ============================================
+winget install --id=Microsoft.Office -e --source winget
+echo * Execução concluída: INSTALACAO PACOTE OFFICE - Executado por Matheus Nascimento *
+pause
+goto aplicativos
+
+:installccleaner
+cls
+echo ============================================
+echo INSTALACAO - CCLEANER
+echo ============================================
+winget install --id=Piriform.CCleaner -e --source winget
+echo * Execução concluída: INSTALACAO CCLEANER - Executado por Matheus Nascimento *
+pause
+goto aplicativos
+
+:installrevo
+cls
+echo ============================================
+echo INSTALACAO - REVO UNINSTALLER
+echo ============================================
+winget install --id=VS.RevoUninstaller -e --source winget
+echo * Execução concluída: INSTALACAO REVO UNINSTALLER - Executado por Matheus Nascimento *
+pause
+goto aplicativos
+
+:installips
+cls
+echo ============================================
+echo INSTALACAO - ADVANCED IP SCANNER
+echo ============================================
+winget install --id=Famatech.AdvancedIPScanner -e --source winget
+echo * Execução concluída: INSTALACAO ADVANCED IP SCANNER - Executado por Matheus Nascimento *
+pause
+goto aplicativos
+
+:installcpuz
+cls
+echo ============================================
+echo INSTALACAO - CPU-Z
+echo ============================================
+winget install --id=CPUID.CPU-Z -e --source winget
+echo * Execução concluída: INSTALACAO CPU-Z - Executado por Matheus Nascimento *
+pause
+goto aplicativos
+
+:installwindirstat
+cls
+echo ============================================
+echo INSTALACAO - WINDIRSTAT
+echo ============================================
+winget install --id=WinDirStat.WinDirStat -e --source winget
+echo * Execução concluída: INSTALACAO WINDIRSTAT - Executado por Matheus Nascimento *
+pause
+goto aplicativos
+
+:installanydesk
+cls
+echo ============================================
+echo INSTALACAO - ANYDESK
+echo ============================================
+winget install --id=AnyDesk.AnyDesk -e --source winget
+echo * Execução concluída: INSTALACAO ANYDESK - Executado por Matheus Nascimento *
+pause
+goto aplicativos
+
+rem =========================
+rem MENU - REDE
+rem =========================
+:rede
+cls
+echo ==================================================
+echo     MENU - REDE
+echo ==================================================
+echo 1 - Verificar IP e MAC Address
+echo 2 - Teste de Conectividade
+echo 3 - Redefinir Parametros de Rede
+echo 4 - Redefinir DNS
+echo 5 - Traceroute
+echo 6 - Comando ARP -A
+echo 7 - Voltar ao Menu Principal
+echo ==================================================
+set /p redeopcao=Escolha uma opcao: 
+
+if %redeopcao%==1 goto checkip
+if %redeopcao%==2 goto testping
+if %redeopcao%==3 goto netreset
+if %redeopcao%==4 goto dnsreset
+if %redeopcao%==5 goto traceroute
+if %redeopcao%==6 goto arpcmd
+if %redeopcao%==7 goto menu
+echo Opcao invalida! Tente novamente.
+pause
+goto rede
+
+:checkip
+cls
+echo ==================================================
+echo IP e MAC ADDRESS
+echo ==================================================
+ipconfig /all
+echo * Execução concluída: VERIFICACAO IP E MAC ADDRESS - Executado por Matheus Nascimento *
+pause
+goto rede
+
+:testping
+cls
+echo ==================================================
+echo TESTE DE CONECTIVIDADE
+echo ==================================================
+ping 8.8.8.8 -n 4
+ping www.microsoft.com -n 4
+echo * Execução concluída: TESTE DE CONECTIVIDADE (PING GOOGLE E MICROSOFT) - Executado por Matheus Nascimento *
+pause
+goto rede
+
+:netreset
+cls
+echo ==================================================
+echo REDEFINICAO DE PARAMETROS DE REDE
+echo ==================================================
+ipconfig /release
+ipconfig /renew
+ipconfig /flushdns
+netsh winsock reset
+netsh int ip reset
+echo * Execução concluída: REDEFINICAO DE PARAMETROS DE REDE - Executado por Matheus Nascimento *
+pause
+goto rede
+
+:dnsreset
+cls
+echo ==================================================
+echo REDEFINICAO DE DNS
+echo ==================================================
+ipconfig /flushdns
+ipconfig /registerdns
+echo * Execução concluída: REDEFINICAO DE DNS - Executado por Matheus Nascimento *
+pause
+goto rede
+
+:traceroute
+cls
+echo ==================================================
+echo TRACEROUTE
+echo ==================================================
+tracert www.google.com
+echo * Execução concluída: TRACEROUTE GOOGLE - Executado por Matheus Nascimento *
+pause
+goto rede
+
+:arpcmd
+cls
+echo ==================================================
+echo COMANDO ARP -A
+echo ==================================================
+arp -a
+echo * Execução concluída: COMANDO ARP -A - Executado por Matheus Nascimento *
+pause
+goto rede
+
+rem =========================
+rem MENU - DRIVERS E ATUALIZACOES
+rem =========================
+:drivers
+cls
+echo ==================================================
+echo     MENU - ATUALIZACAO E DRIVERS
+echo ==================================================
+echo 1 - Atualizacoes do Windows Update
+echo 2 - Atualizacoes de Softwares (via Winget)
+echo 3 - Backup de Drivers
+echo 4 - Voltar ao Menu Principal
+echo ==================================================
+set /p drvopcao=Escolha uma opcao: 
+
+if %drvopcao%==1 goto winupdate
+if %drvopcao%==2 goto wingetupgrade
+if %drvopcao%==3 goto backupdrivers
+if %drvopcao%==4 goto menu
+echo Opcao invalida! Tente novamente.
+pause
+goto drivers
+
+:winupdate
+cls
+echo ==================================================
+echo ATUALIZACOES DO WINDOWS
+echo ==================================================
+powershell -Command "Install-Module PSWindowsUpdate -Force; Get-WindowsUpdate -Install -AcceptAll -IgnoreReboot"
+echo * Execução concluída: ATUALIZACOES WINDOWS - Executado por Matheus Nascimento *
+pause
+goto drivers
+
+:wingetupgrade
+cls
+echo ==================================================
+echo ATUALIZACAO DE SOFTWARES VIA WINGET
+echo ==================================================
+winget upgrade --all -e
+echo * Execução concluída: ATUALIZACAO DE SOFTWARES VIA WINGET - Executado por Matheus Nascimento *
+pause
+goto drivers
+
+:backupdrivers
+cls
+echo ==================================================
+echo BACKUP DE DRIVERS
+echo ==================================================
+powershell -Command "New-Item -ItemType Directory -Force -Path C:\Backup_Drivers; Export-WindowsDriver -Online -Destination C:\Backup_Drivers"
+echo * Execução concluída: BACKUP DE DRIVERS PARA C:\Backup_Drivers - Executado por Matheus Nascimento *
+pause
+goto drivers
+
+rem =========================
+rem MENU - IMPRESSORA
+rem =========================
+:impressora
+cls
+echo ==================================================
+echo     MENU - IMPRESSORA
+echo ==================================================
+echo 1 - Limpar fila de impressão
+echo 2 - Configurar impressora padrao
+echo 3 - Voltar ao Menu Principal
+echo ==================================================
+set /p impopcao=Escolha uma opcao: 
+if %impopcao%==1 goto clearprint
+if %impopcao%==2 goto setdefaultprinter
+if %impopcao%==3 goto menu
+echo Opcao invalida! Tente novamente.
+pause
+goto impressora
+
+:clearprint
+cls
+echo ==================================================
+echo LIMPEZA DE FILA DE IMPRESSAO
+echo ==================================================
+net stop spooler
+del /Q /F %systemroot%\System32\spool\PRINTERS\*.*
+net start spooler
+echo * Execução concluída: LIMPEZA DE FILA DE IMPRESSAO - Executado por Matheus Nascimento *
+pause
+goto impressora
+
+:setdefaultprinter
+cls
+echo ==================================================
+echo CONFIGURACAO DE IMPRESSORA PADRAO
+echo ==================================================
+echo >> Cole aqui o comando para configurar a impressora padrao <<
+echo * Execução concluída: CONFIGURACAO IMPRESSORA PADRAO - Executado por Matheus Nascimento *
+pause
+goto impressora
